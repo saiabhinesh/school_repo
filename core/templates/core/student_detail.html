@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ student }} - Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+
+        .value {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+
+        .btn-edit {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background-color: #d35400;
+        }
+
+        .btn-delete {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-back {
+            background-color: #95a5a6;
+            color: white;
+        }
+
+        .btn-back:hover {
+            background-color: #7f8c8d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Student Details</h1>
+
+        <div class="detail-row">
+            <span class="label">First Name:</span>
+            <span class="value">{{ student.first_name }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Last Name:</span>
+            <span class="value">{{ student.last_name }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Email:</span>
+            <span class="value">{{ student.email }}</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Enrollment Date:</span>
+            <span class="value">{{ student.enrollment_date }}</span>
+        </div>
+
+        <div class="actions">
+            <a href="{% url 'student_list' %}" class="btn btn-back">Back to List</a>
+            <a href="{% url 'student_update' student.pk %}" class="btn btn-edit">Edit</a>
+            <a href="{% url 'student_delete' student.pk %}" class="btn btn-delete">Delete</a>
+        </div>
+    </div>
+</body>
+
+</html>

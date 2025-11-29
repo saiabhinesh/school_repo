@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Student</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            flex: 1;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        .cancel-link {
+            background-color: #95a5a6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            flex: 1;
+            display: inline-block;
+            line-height: normal;
+        }
+
+        .cancel-link:hover {
+            background-color: #7f8c8d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Delete Student?</h1>
+        <p>Are you sure you want to delete <strong>{{ student }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="actions">
+                <a href="{% url 'student_list' %}" class="cancel-link">Cancel</a>
+                <button type="submit">Confirm Delete</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

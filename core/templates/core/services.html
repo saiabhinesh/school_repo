@@ -1,0 +1,502 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Programs and Facilities - Sri Majety High School, Guntur">
+    <title>Our Programs - Sri Majety High School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Telugu', sans-serif;
+            background: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 153, 51, 0.2);
+            border-bottom: 3px solid #FF9933;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav .logo-section img {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        nav .school-name {
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav .school-name h1 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF9933 0%, #138808 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        nav .school-name p {
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #FF9933;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FF9933, #138808);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            color: #1a1a1a;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FF9933 0%, #138808 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 3rem 2rem 5rem;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(255, 153, 51, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 153, 51, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #FF9933, #138808);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 153, 51, 0.3);
+            border-color: #FF9933;
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FF9933 0%, #138808 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .service-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: #FF9933;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 3.5rem 2rem 2rem;
+            margin-top: 3rem;
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        footer .school-info {
+            margin-bottom: 2rem;
+        }
+
+        footer .school-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FF9933 0%, #138808 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        footer p {
+            opacity: 0.9;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            nav .school-name h1 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo-section">
+                <img src="{% static 'core/images/school_logo.png' %}" alt="Sri Majety High School Logo">
+                <div class="school-name">
+                    <h1>Sri Majety High School</h1>
+                    <p>Guntur, Andhra Pradesh</p>
+                </div>
+            </div>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'services' %}">Services</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'student_list' %}">Students</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Our Programs & Facilities</h1>
+        <p>Comprehensive education programs designed to nurture academic excellence and holistic development</p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="services-container">
+            <div class="services-grid">
+                <!-- Academic Programs -->
+                <div class="service-card">
+                    <span class="service-icon">📚</span>
+                    <h3>Academic Programs</h3>
+                    <p>Comprehensive curriculum following state board guidelines with focus on conceptual learning and
+                        practical application.</p>
+                    <ul class="service-features">
+                        <li>Classes from 6th to 10th Standard</li>
+                        <li>State Board Curriculum</li>
+                        <li>English & Telugu Medium</li>
+                        <li>Regular Assessments</li>
+                        <li>Exam Preparation Support</li>
+                    </ul>
+                </div>
+
+                <!-- Science & Mathematics -->
+                <div class="service-card">
+                    <span class="service-icon">🔬</span>
+                    <h3>Science & Mathematics</h3>
+                    <p>Well-equipped laboratories and experienced faculty to make science and mathematics engaging and
+                        practical.</p>
+                    <ul class="service-features">
+                        <li>Physics Laboratory</li>
+                        <li>Chemistry Laboratory</li>
+                        <li>Biology Laboratory</li>
+                        <li>Mathematics Lab</li>
+                        <li>Hands-on Experiments</li>
+                    </ul>
+                </div>
+
+                <!-- Computer Education -->
+                <div class="service-card">
+                    <span class="service-icon">💻</span>
+                    <h3>Computer Education</h3>
+                    <p>Modern computer lab with internet facility to prepare students for the digital age.</p>
+                    <ul class="service-features">
+                        <li>Computer Lab with 30+ Systems</li>
+                        <li>Internet Facility</li>
+                        <li>Basic Programming</li>
+                        <li>MS Office Training</li>
+                        <li>Digital Literacy</li>
+                    </ul>
+                </div>
+
+                <!-- Library -->
+                <div class="service-card">
+                    <span class="service-icon">📖</span>
+                    <h3>Library Facilities</h3>
+                    <p>Well-stocked library with a wide collection of books, magazines, and reference materials.</p>
+                    <ul class="service-features">
+                        <li>2000+ Books Collection</li>
+                        <li>Reference Books</li>
+                        <li>Magazines & Newspapers</li>
+                        <li>Reading Room</li>
+                        <li>Book Lending System</li>
+                    </ul>
+                </div>
+
+                <!-- Sports & Games -->
+                <div class="service-card">
+                    <span class="service-icon">⚽</span>
+                    <h3>Sports & Games</h3>
+                    <p>Emphasis on physical education and sports to ensure overall development of students.</p>
+                    <ul class="service-features">
+                        <li>Cricket & Football</li>
+                        <li>Volleyball & Badminton</li>
+                        <li>Kho-Kho & Kabaddi</li>
+                        <li>Athletics Track</li>
+                        <li>Annual Sports Day</li>
+                    </ul>
+                </div>
+
+                <!-- Co-Curricular Activities -->
+                <div class="service-card">
+                    <span class="service-icon">🎭</span>
+                    <h3>Co-Curricular Activities</h3>
+                    <p>Various activities to discover and nurture hidden talents in students.</p>
+                    <ul class="service-features">
+                        <li>Cultural Programs</li>
+                        <li>Debates & Elocution</li>
+                        <li>Art & Craft</li>
+                        <li>Music & Dance</li>
+                        <li>Science Exhibitions</li>
+                    </ul>
+                </div>
+
+                <!-- Smart Classrooms -->
+                <div class="service-card">
+                    <span class="service-icon">🖥️</span>
+                    <h3>Smart Classrooms</h3>
+                    <p>Technology-enabled classrooms for interactive and engaging learning experiences.</p>
+                    <ul class="service-features">
+                        <li>Digital Boards</li>
+                        <li>Projectors & Audio Systems</li>
+                        <li>Interactive Learning</li>
+                        <li>Multimedia Content</li>
+                        <li>Visual Learning Aids</li>
+                    </ul>
+                </div>
+
+                <!-- Career Guidance -->
+                <div class="service-card">
+                    <span class="service-icon">🎯</span>
+                    <h3>Career Guidance</h3>
+                    <p>Counseling and guidance to help students make informed decisions about their future.</p>
+                    <ul class="service-features">
+                        <li>Career Counseling Sessions</li>
+                        <li>Aptitude Tests</li>
+                        <li>College Guidance</li>
+                        <li>Competitive Exam Prep</li>
+                        <li>Guest Lectures</li>
+                    </ul>
+                </div>
+
+                <!-- Value Education -->
+                <div class="service-card">
+                    <span class="service-icon">🙏</span>
+                    <h3>Value Education</h3>
+                    <p>Focus on moral values, ethics, and character building alongside academic excellence.</p>
+                    <ul class="service-features">
+                        <li>Moral Science Classes</li>
+                        <li>Yoga & Meditation</li>
+                        <li>Discipline Training</li>
+                        <li>Community Service</li>
+                        <li>Cultural Heritage</li>
+                    </ul>
+                </div>
+
+                <!-- Parent-Teacher Interaction -->
+                <div class="service-card">
+                    <span class="service-icon">👨‍👩‍👧</span>
+                    <h3>Parent-Teacher Interaction</h3>
+                    <p>Regular communication with parents to ensure collaborative student development.</p>
+                    <ul class="service-features">
+                        <li>Parent-Teacher Meetings</li>
+                        <li>Progress Reports</li>
+                        <li>SMS Alerts</li>
+                        <li>Open Communication</li>
+                        <li>Feedback System</li>
+                    </ul>
+                </div>
+
+                <!-- Safety & Security -->
+                <div class="service-card">
+                    <span class="service-icon">🛡️</span>
+                    <h3>Safety & Security</h3>
+                    <p>Safe and secure environment for students with proper safety measures in place.</p>
+                    <ul class="service-features">
+                        <li>CCTV Surveillance</li>
+                        <li>Trained Security Staff</li>
+                        <li>First Aid Facility</li>
+                        <li>Fire Safety Equipment</li>
+                        <li>Safe Campus</li>
+                    </ul>
+                </div>
+
+                <!-- Transportation -->
+                <div class="service-card">
+                    <span class="service-icon">🚌</span>
+                    <h3>Transportation</h3>
+                    <p>Safe and reliable transportation facility covering various routes in Guntur.</p>
+                    <ul class="service-features">
+                        <li>School Bus Service</li>
+                        <li>Multiple Routes</li>
+                        <li>Trained Drivers</li>
+                        <li>GPS Tracking</li>
+                        <li>Safe Commute</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="school-info">
+                <h3>Sri Majety High School</h3>
+                <p>Shaping Tomorrow's Leaders Today</p>
+            </div>
+            <p>&copy; 2025 Sri Majety High School. All rights reserved.</p>
+            <p>Empowering education with tradition and innovation</p>
+        </div>
+    </footer>
+</body>
+
+</html>
