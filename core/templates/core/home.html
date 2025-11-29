@@ -550,120 +550,124 @@
         <div class="container">
             <div class="logo-section">
                 <img src="{% static 'core/images/school_logo.png' %}" alt="Sri Majety High School Logo">
-                <div class="hero-content">
-                    <img src="{% static 'core/images/school_logo.png' %}" alt="School Logo" class="hero-logo">
+                <div class="school-name">
                     <h1>Sri Majety High School</h1>
-                    <p class="subtitle">Excellence in Education Since Inception</p>
-                    <div class="location">
-                        <span>📍</span>
-                        <span>Nallacheruvu 1st Lane, Guntur, Andhra Pradesh, India</span>
+                    <p>Guntur, Andhra Pradesh</p>
+                    <div class="hero-content">
+                        <img src="{% static 'core/images/school_logo.png' %}" alt="School Logo" class="hero-logo">
+                        <h1>Sri Majety High School</h1>
+                        <p class="subtitle">Excellence in Education Since Inception</p>
+                        <div class="location">
+                            <span>📍</span>
+                            <span>Nallacheruvu 1st Lane, Guntur, Andhra Pradesh, India</span>
+                        </div>
+                        <p class="tagline">"Nurturing Young Minds, Building Bright Futures"</p>
+                        <div class="cta-buttons">
+                            <a href="{% url 'student_list' %}" class="btn btn-primary">View Students</a>
+                            <a href="{% url 'services' %}" class="btn btn-secondary">Our Programs</a>
+                        </div>
                     </div>
-                    <p class="tagline">"Nurturing Young Minds, Building Bright Futures"</p>
-                    <div class="cta-buttons">
-                        <a href="{% url 'student_list' %}" class="btn btn-primary">View Students</a>
-                        <a href="{% url 'services' %}" class="btn btn-secondary">Our Programs</a>
-                    </div>
-                </div>
-                </section>
+                    </section>
 
-                <!-- Features Section -->
-                <section class="features">
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Why Choose Sri Majety High School?</h2>
-                            <p>Committed to providing quality education with traditional values and modern teaching
-                                methods</p>
+                    <!-- Features Section -->
+                    <section class="features">
+                        <div class="container">
+                            <div class="section-title">
+                                <h2>Why Choose Sri Majety High School?</h2>
+                                <p>Committed to providing quality education with traditional values and modern teaching
+                                    methods</p>
+                            </div>
+                            <div class="features-grid">
+                                <div class="feature-card">
+                                    <span class="feature-icon">📚</span>
+                                    <h3>Quality Education</h3>
+                                    <p>Comprehensive curriculum designed to foster academic excellence and holistic
+                                        development of every
+                                        student.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <span class="feature-icon">👨‍🏫</span>
+                                    <h3>Experienced Faculty</h3>
+                                    <p>Dedicated and qualified teachers committed to nurturing talent and guiding
+                                        students towards
+                                        success.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <span class="feature-icon">🏆</span>
+                                    <h3>Academic Excellence</h3>
+                                    <p>Proven track record of outstanding results and achievements in academics, sports,
+                                        and
+                                        co-curricular activities.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <span class="feature-icon">🌟</span>
+                                    <h3>Character Building</h3>
+                                    <p>Focus on moral values, discipline, and character development alongside academic
+                                        growth.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <span class="feature-icon">🔬</span>
+                                    <h3>Modern Facilities</h3>
+                                    <p>Well-equipped laboratories, library, and smart classrooms to enhance the learning
+                                        experience.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <span class="feature-icon">🤝</span>
+                                    <h3>Community Focus</h3>
+                                    <p>Strong parent-teacher collaboration and community engagement for comprehensive
+                                        student
+                                        development.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="features-grid">
-                            <div class="feature-card">
-                                <span class="feature-icon">📚</span>
-                                <h3>Quality Education</h3>
-                                <p>Comprehensive curriculum designed to foster academic excellence and holistic
-                                    development of every
-                                    student.</p>
-                            </div>
-                            <div class="feature-card">
-                                <span class="feature-icon">👨‍🏫</span>
-                                <h3>Experienced Faculty</h3>
-                                <p>Dedicated and qualified teachers committed to nurturing talent and guiding students
-                                    towards
-                                    success.</p>
-                            </div>
-                            <div class="feature-card">
-                                <span class="feature-icon">🏆</span>
-                                <h3>Academic Excellence</h3>
-                                <p>Proven track record of outstanding results and achievements in academics, sports, and
-                                    co-curricular activities.</p>
-                            </div>
-                            <div class="feature-card">
-                                <span class="feature-icon">🌟</span>
-                                <h3>Character Building</h3>
-                                <p>Focus on moral values, discipline, and character development alongside academic
-                                    growth.</p>
-                            </div>
-                            <div class="feature-card">
-                                <span class="feature-icon">🔬</span>
-                                <h3>Modern Facilities</h3>
-                                <p>Well-equipped laboratories, library, and smart classrooms to enhance the learning
-                                    experience.</p>
-                            </div>
-                            <div class="feature-card">
-                                <span class="feature-icon">🤝</span>
-                                <h3>Community Focus</h3>
-                                <p>Strong parent-teacher collaboration and community engagement for comprehensive
-                                    student
-                                    development.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                    </section>
 
-                <!-- Stats Section -->
-                <section class="stats">
-                    <div class="container">
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <h3>300+</h3>
-                                <p>Active Students</p>
-                            </div>
-                            <div class="stat-item">
-                                <h3>25+</h3>
-                                <p>Dedicated Teachers</p>
-                            </div>
-                            <div class="stat-item">
-                                <h3>95%</h3>
-                                <p>Success Rate</p>
-                            </div>
-                            <div class="stat-item">
-                                <h3>100%</h3>
-                                <p>Commitment</p>
+                    <!-- Stats Section -->
+                    <section class="stats">
+                        <div class="container">
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <h3>300+</h3>
+                                    <p>Active Students</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3>25+</h3>
+                                    <p>Dedicated Teachers</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3>95%</h3>
+                                    <p>Success Rate</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3>100%</h3>
+                                    <p>Commitment</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <!-- Footer -->
-                <footer>
-                    <div class="container">
-                        <div class="school-info">
-                            <h3>Sri Majety High School</h3>
-                            <p>Shaping Tomorrow's Leaders Today</p>
+                    <!-- Footer -->
+                    <footer>
+                        <div class="container">
+                            <div class="school-info">
+                                <h3>Sri Majety High School</h3>
+                                <p>Shaping Tomorrow's Leaders Today</p>
+                            </div>
+                            <div class="contact-info">
+                                <p><strong>📍 Address:</strong> Nallacheruvu 1st Lane, Guntur, Andhra Pradesh, India</p>
+                                <p><strong>📧 Email:</strong> info@srimajety.edu.in</p>
+                                <p><strong>📞 Phone:</strong> +91 9700 622222 (Primary), +91 8019 734989 (Secondary)</p>
+                            </div>
+                            <p>&copy; 2025 Sri Majety High School. All rights reserved.</p>
+                            <p>Empowering education with tradition and innovation</p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Facebook">📘</a>
+                                <a href="#" aria-label="Twitter">🐦</a>
+                                <a href="#" aria-label="Instagram">📷</a>
+                                <a href="#" aria-label="YouTube">📺</a>
+                            </div>
                         </div>
-                        <div class="contact-info">
-                            <p><strong>📍 Address:</strong> Nallacheruvu 1st Lane, Guntur, Andhra Pradesh, India</p>
-                            <p><strong>📧 Email:</strong> info@srimajety.edu.in</p>
-                            <p><strong>📞 Phone:</strong> +91 9700 622222 (Primary), +91 8019 734989 (Secondary)</p>
-                        </div>
-                        <p>&copy; 2025 Sri Majety High School. All rights reserved.</p>
-                        <p>Empowering education with tradition and innovation</p>
-                        <div class="social-links">
-                            <a href="#" aria-label="Facebook">📘</a>
-                            <a href="#" aria-label="Twitter">🐦</a>
-                            <a href="#" aria-label="Instagram">📷</a>
-                            <a href="#" aria-label="YouTube">📺</a>
-                        </div>
-                    </div>
-                </footer>
+                    </footer>
 </body>
 
 </html>
