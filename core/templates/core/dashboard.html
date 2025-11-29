@@ -1,0 +1,394 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard - Sri Majety High School">
+    <title>Dashboard - Sri Majety High School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Telugu', sans-serif;
+            background: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 153, 51, 0.2);
+            border-bottom: 3px solid #FF9933;
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav .logo-section img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav .school-name h1 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF9933 0%, #138808 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .user-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(255, 153, 51, 0.1), rgba(19, 136, 8, 0.1));
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .role-badge {
+            background: linear-gradient(135deg, #FF9933, #FF7700);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-logout {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-logout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF9933 0%, #138808 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 153, 51, 0.15);
+            border: 2px solid rgba(255, 153, 51, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 153, 51, 0.25);
+        }
+
+        .stat-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF9933 0%, #138808 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 153, 51, 0.15);
+            border: 2px solid rgba(255, 153, 51, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .quick-actions h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FF9933 0%, #138808 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, #FF9933 0%, #FF7700 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 153, 51, 0.4);
+        }
+
+        .action-btn .icon {
+            font-size: 1.5rem;
+        }
+
+        /* Recent Students */
+        .recent-students {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 153, 51, 0.15);
+            border: 2px solid rgba(255, 153, 51, 0.1);
+        }
+
+        .recent-students h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FF9933 0%, #138808 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .student-list {
+            list-style: none;
+        }
+
+        .student-item {
+            padding: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .student-item:hover {
+            background: rgba(255, 153, 51, 0.05);
+            transform: translateX(5px);
+        }
+
+        .student-item:last-child {
+            border-bottom: none;
+        }
+
+        .student-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .student-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .class-badge {
+            background: linear-gradient(135deg, #138808, #0a5504);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .no-students {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo-section">
+                <img src="{% static 'core/images/school_logo.png' %}" alt="Sri Majety High School Logo">
+                <div class="school-name">
+                    <h1>Sri Majety High School</h1>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-badge">
+                    <span>👤 {{ user.get_full_name|default:user.username }}</span>
+                    <span class="role-badge">{{ profile.get_role_display }}</span>
+                </div>
+                <a href="{% url 'logout' %}" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h2>Welcome, {{ user.get_full_name|default:user.username }}! 👋</h2>
+            <p>Manage student data and view school statistics</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="icon">👨‍🎓</div>
+                <h3>{{ total_students }}</h3>
+                <p>Total Students</p>
+            </div>
+            <div class="stat-card">
+                <div class="icon">📚</div>
+                <h3>5</h3>
+                <p>Classes (6-10)</p>
+            </div>
+            <div class="stat-card">
+                <div class="icon">✅</div>
+                <h3>{{ recent_students|length }}</h3>
+                <p>Recent Enrollments</p>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <div class="action-buttons">
+                <a href="{% url 'student_create' %}" class="action-btn">
+                    <span class="icon">➕</span>
+                    <span>Add New Student</span>
+                </a>
+                <a href="{% url 'student_list' %}" class="action-btn">
+                    <span class="icon">📋</span>
+                    <span>View All Students</span>
+                </a>
+                <a href="{% url 'home' %}" class="action-btn">
+                    <span class="icon">🏠</span>
+                    <span>Go to Website</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Students -->
+        <div class="recent-students">
+            <h3>Recently Enrolled Students</h3>
+            {% if recent_students %}
+            <ul class="student-list">
+                {% for student in recent_students %}
+                <li class="student-item">
+                    <div class="student-info">
+                        <h4>{{ student.first_name }} {{ student.last_name }}</h4>
+                        <p>{{ student.email }} • Enrolled: {{ student.enrollment_date|date:"M d, Y" }}</p>
+                    </div>
+                    <span class="class-badge">Class {{ student.current_class }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <div class="no-students">
+                <p>No students enrolled yet. Click "Add New Student" to get started!</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
