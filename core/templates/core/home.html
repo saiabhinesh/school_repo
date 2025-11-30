@@ -94,7 +94,8 @@
             position: relative;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav a.active {
             color: #FF9933;
         }
 
@@ -109,13 +110,13 @@
             transition: width 0.3s ease;
         }
 
-        nav a:hover::after {
+        nav a:hover::after,
+        nav a.active::after {
             width: 100%;
         }
 
         /* Hero Section */
         .hero {
-            min-height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -556,7 +557,7 @@
                 </div>
             </div>
             <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'home' %}" class="active">Home</a></li>
                 <li><a href="{% url 'services' %}">Services</a></li>
                 <li><a href="{% url 'contact' %}">Contact</a></li>
                 {% if user.is_authenticated %}
@@ -577,6 +578,10 @@
             <div class="location">
                 <span>📍</span>
                 <span>Nallacheruvu 1st Lane, Guntur, Andhra Pradesh, India</span>
+            </div>
+            <div class="location" style="margin-top: -1.5rem; font-size: 1rem;">
+                <span>📞</span>
+                <span>+91 9700 622222 (Primary), +91 8019 734989 (Secondary)</span>
             </div>
             <p class="tagline">"Nurturing Young Minds, Building Bright Futures"</p>
             <div class="cta-buttons">

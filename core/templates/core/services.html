@@ -94,7 +94,8 @@
             position: relative;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav a.active {
             color: #FF9933;
         }
 
@@ -109,7 +110,8 @@
             transition: width 0.3s ease;
         }
 
-        nav a:hover::after {
+        nav a:hover::after,
+        nav a.active::after {
             width: 100%;
         }
 
@@ -262,6 +264,43 @@
             margin-bottom: 0.8rem;
         }
 
+        footer .contact-info {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        footer .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        footer .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        footer .social-links a {
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        footer .social-links a:hover {
+            background: linear-gradient(135deg, #FF9933, #138808);
+            transform: translateY(-5px) rotate(5deg);
+        }
+
         @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2.5rem;
@@ -296,9 +335,13 @@
             </div>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'services' %}">Services</a></li>
+                <li><a href="{% url 'services' %}" class="active">Services</a></li>
                 <li><a href="{% url 'contact' %}">Contact</a></li>
-                <li><a href="{% url 'student_list' %}">Students</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Staff Login</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -493,8 +536,19 @@
                 <h3>Sri Majety High School</h3>
                 <p>Shaping Tomorrow's Leaders Today</p>
             </div>
+            <div class="contact-info">
+                <p><strong>📍 Address:</strong> Nallacheruvu 1st Lane, Guntur, Andhra Pradesh, India</p>
+                <p><strong>📧 Email:</strong> info@srimajety.edu.in</p>
+                <p><strong>📞 Phone:</strong> +91 9700 622222 (Primary), +91 8019 734989 (Secondary)</p>
+            </div>
             <p>&copy; 2025 Sri Majety High School. All rights reserved.</p>
             <p>Empowering education with tradition and innovation</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="YouTube">📺</a>
+            </div>
         </div>
     </footer>
 </body>

@@ -94,7 +94,8 @@
             position: relative;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav a.active {
             color: #FF9933;
         }
 
@@ -109,7 +110,8 @@
             transition: width 0.3s ease;
         }
 
-        nav a:hover::after {
+        nav a:hover::after,
+        nav a.active::after {
             width: 100%;
         }
 
@@ -350,6 +352,43 @@
             margin-bottom: 0.8rem;
         }
 
+        footer .contact-info {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        footer .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        footer .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        footer .social-links a {
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        footer .social-links a:hover {
+            background: linear-gradient(135deg, #FF9933, #138808);
+            transform: translateY(-5px) rotate(5deg);
+        }
+
         @media (max-width: 968px) {
             .contact-container {
                 grid-template-columns: 1fr;
@@ -385,8 +424,12 @@
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'services' %}">Services</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
-                <li><a href="{% url 'student_list' %}">Students</a></li>
+                <li><a href="{% url 'contact' %}" class="active">Contact</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Staff Login</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -400,14 +443,39 @@
     <!-- Contact Section -->
     <section class="contact-section">
         <div class="contact-container">
-            <!-- Contact Information -->
+            <!-- Contact Info -->
             <div class="contact-info">
                 <div class="info-card">
                     <div class="info-card-header">
                         <span class="info-icon">📍</span>
-                        <p>Monday - Friday: 8:00 AM - 4:00 PM</p>
-                        <p>Saturday: 8:00 AM - 12:00 PM</p>
-                        <p>Sunday: Closed</p>
+                        <div>
+                            <h3>Address</h3>
+                            <p>Nallacheruvu 1st Lane, Guntur, Andhra Pradesh, India</p>
+                        </div>
+                    </div>
+                    <div class="info-card-header">
+                        <span class="info-icon">📞</span>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+91 9700 622222 (Primary)</p>
+                            <p>+91 8019 734989 (Secondary)</p>
+                        </div>
+                    </div>
+                    <div class="info-card-header">
+                        <span class="info-icon">📧</span>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@srimajety.edu.in</p>
+                        </div>
+                    </div>
+                    <div class="info-card-header">
+                        <span class="info-icon">🕒</span>
+                        <div>
+                            <h3>Opening Hours</h3>
+                            <p>Monday - Friday: 8:00 AM - 4:00 PM</p>
+                            <p>Saturday: 8:00 AM - 12:00 PM</p>
+                            <p>Sunday: Closed</p>
+                        </div>
                     </div>
 
                     <!-- Map Section -->
@@ -416,41 +484,32 @@
                         <div class="map-placeholder">🗺️</div>
                     </div>
                 </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form-wrapper">
-                    <h2>Send Us a Message</h2>
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <input type="text" id="subject" name="subject" required placeholder="How can we help you?">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" required
-                                placeholder="Tell us more about your inquiry..."></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
             </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <h2>Send us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Admission Inquiry">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -460,14 +519,24 @@
                 <h3>Sri Majety High School</h3>
                 <p>Shaping Tomorrow's Leaders Today</p>
             </div>
+            <div class="contact-info">
+                <p><strong>📍 Address:</strong> Nallacheruvu 1st Lane, Guntur, Andhra Pradesh, India</p>
+                <p><strong>📧 Email:</strong> info@srimajety.edu.in</p>
+                <p><strong>📞 Phone:</strong> +91 9700 622222 (Primary), +91 8019 734989 (Secondary)</p>
+            </div>
             <p>&copy; 2025 Sri Majety High School. All rights reserved.</p>
             <p>Empowering education with tradition and innovation</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="YouTube">📺</a>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Form submission handler
-        document.getElementById('contact-form').addEventListener('submit', function (e) {
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
             // Get form data
